@@ -1,11 +1,11 @@
 
-function Profile() {
-
+function Profile(props) {
+	const { info } = props;
 	return (
 		<>
 			<div className="profile">
-				<img src="https://api.multiavatar.com/09243.svg" />
-				<span>Jennifer</span>
+				<img src={info.avatarUrl} />
+				<span>{info.name}</span>
 			</div>
 		</>
 	)
