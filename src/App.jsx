@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Profile from "./components/Profile"
-
+import './Form.css'
 const APIDataStatic = [
   {
     "createdAt": "2024-10-17T03:53:51.456Z",
@@ -27,23 +27,50 @@ const APIDataStatic = [
     "id": "4"
   }
 ]
-const sampleUser = {
-  "name": "Gökhan Özdemir",
-  "avatarUrl": "https://api.multiavatar.com/1234.svg",
-  "id": "5"
-}
+
 
 function App() {
   const [users, setUsers] = useState(APIDataStatic);
+  const [form, setForm] = useState({ username: "" });
 
   const handleAddUser = (newUser) => {
-    setUsers([...users, newUser])
+    setUsers([newUser, ...users])
+  }
+
+  const handleChange = (event) => {
+    // console.log(event)
+    const newUser = {
+      ...form,
+      [event.target.name]: event.target.value
+    }
+
+    setForm(newUser)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const submittedUser = {
+      name: form.username,
+      id: Date.now(),
+      avatarUrl: `https://api.multiavatar.com/${form.username}.svg`
+    }
+    setForm({ username: "" })
+    handleAddUser(submittedUser)
   }
 
   return (
     <>
-      <button onClick={() => handleAddUser(sampleUser)}>Add User</button>
+      <form onSubmit={handleSubmit}>
+        {form.username}
+        <div className="input-group">
+          <label htmlFor="username">Username</label>
+          <input value={form.username} onChange={handleChange} type="text" id="username" name="username" placeholder="Kullanıcı Adı" />
+        </div>
+
+        <button type="submit">Add User</button>
+      </form>
       {users.map((user) => (
+
         <Profile
           key={user.id}
           info={user}
