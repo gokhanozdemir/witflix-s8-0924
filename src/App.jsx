@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import Profile from "./components/Profile"
 
 function App() {
 
   return (
     <>
-      Project Reset
+      <Profile />
     </>
   )
 }
