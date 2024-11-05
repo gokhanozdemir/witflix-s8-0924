@@ -81,7 +81,10 @@ function App() {
                 <input type="text" name="district" id="district" />
               </div>
             </div>
-
+            <div className="input-group">
+              <label htmlFor="gdpr">GDPR</label>
+              <input type="text" name="gdpr" id="gdpr" />
+            </div>
 
             <div className="flex between ">
               <button type="submit" className="action-button">Pay Now</button>
