@@ -1,5 +1,76 @@
 import { useState } from "react"
 
+
+const cities = [
+  {
+    cCode: "ank",
+    name: "Ankara"
+  },
+  {
+    cCode: "ist",
+    name: "İstanbul"
+  },
+  {
+    cCode: "izm",
+    name: "İzmir"
+  },
+  {
+    cCode: "ada",
+    name: "Adana"
+  },
+  {
+    cCode: "sam",
+    name: "Samsun"
+  },
+  {
+    cCode: "dnz",
+    name: "Denizli"
+  },
+  {
+    cCode: "esk",
+    name: "Eskişehir"
+  },
+  {
+    cCode: "ny",
+    name: "Newyork"
+  }
+]
+
+const districts = [
+  {
+    cCode: "ank",
+    name: "Dist Ankara"
+  },
+  {
+    cCode: "ist",
+    name: "Dist İstanbul"
+  },
+  {
+    cCode: "izm",
+    name: "Dist İzmir"
+  },
+  {
+    cCode: "ada",
+    name: "Dist Adana"
+  },
+  {
+    cCode: "sam",
+    name: "Dist Samsun"
+  },
+  {
+    cCode: "dnz",
+    name: "Dist Denizli"
+  },
+  {
+    cCode: "esk",
+    name: "Dist Eskişehir"
+  },
+  {
+    cCode: "ny",
+    name: "Dist Newyork"
+  }
+]
+
 function App() {
   const [formData, setFormData] = useState({});
 
@@ -55,15 +126,34 @@ function App() {
               <label htmlFor="cvc">CVC</label>
               <input type="number" name="cvc" id="cvc" />
             </div>
-              {/* TODO: convert to dropdown */}
               <div className="input-group">
                 <label htmlFor="exp_month">Month</label>
-                <input type="text" name="exp_month" id="exp_month" />
+
+                <select id="exp_month" name="exp_month">
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
               </div>
-              {/* TODO: convert to dropdown */}
               <div className="input-group">
                 <label htmlFor="exp_year">Year</label>
-                <input type="text" name="exp_year" id="exp_year" />
+                <select id="exp_year" name="exp_year">
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                </select>
               </div></div>
             {/* TODO: convert to radio */}
             <div className="input-group">
@@ -79,15 +169,18 @@ function App() {
                 <label htmlFor="zipcode">Zip Code</label>
                 <input type="text" name="zipcode" id="zipcode" />
               </div>
-              {/* TODO: convert to dropdown */}
               <div className="input-group">
                 <label htmlFor="city">City</label>
-                <input type="text" name="city" id="city" />
+                <select id="city" name="city">
+                  {cities.map((city) => <option key={city.cCode} value={city.cCode}>{city.name}</option>)}
+                </select>
               </div>
-              {/* TODO: convert to dropdown */}
               <div className="input-group">
                 <label htmlFor="district">District</label>
-                <input type="text" name="district" id="district" />
+                <select id="district" name="district" defaultValue={"-1"}>
+                  <option value="-1" disabled="true">Select District</option>
+                  {districts.map((district) => <option key={district.cCode} value={district.cCode}>{district.name}</option>)}
+                </select>
               </div>
             </div>
             <div className="input-group">
