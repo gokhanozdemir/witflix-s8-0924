@@ -71,17 +71,43 @@ const districts = [
   }
 ]
 
+const initialForm = {
+
+  "creditcard": "",
+  "firstname": "",
+  "lastname": "",
+  "email": "",
+  "cvc": "",
+  "exp_month": "11",
+  "exp_year": "2024",
+  "cctype": "",
+  "address": "",
+  "zipcode": "",
+  "city": "ist",
+  "district": "-1",
+  "gdpr": true
+
+}
+
 function App() {
   const [formData, setFormData] = useState({});
 
   const handleChange = (event) => {
-    // console.log(event)
-    const newUser = {
-      ...formData,
-      [event.target.name]: event.target.value
-    }
+    const { type, name, value, checked } = event.target
+    console.log("type, name, value, checked:", type, name, value, checked)
 
-    setFormData(newUser)
+
+    if (type === "checkbox") {
+      setFormData({
+        ...formData,
+        [name]: checked // tek farklı satır
+      })
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value // tek farklı satır
+      })
+    }
   }
 
   const handleSubmit = (event) => {
@@ -107,24 +133,24 @@ function App() {
             <div className="flex gap-s">
               <div className="input-group">
                 <label htmlFor="firstname">First Name</label>
-                <input type="text" name="firstname" id="firstname" />
+                <input type="text" value={formData.firstname} onChange={handleChange} name="firstname" id="firstname" />
               </div>
               <div className="input-group">
                 <label htmlFor="lastname">Last Name</label>
-                <input type="text" name="lastname" id="lastname" />
+                <input type="text" value={formData.lastname} onChange={handleChange} name="lastname" id="lastname" />
               </div>
             </div>
             <div className="input-group">
               <label htmlFor="email">E-mail</label>
-              <input type="email" name="email" id="email" />
+              <input type="email" onChange={handleChange} value={formData.email} name="email" id="email" />
             </div>
             <div className="input-group">
               <label htmlFor="creditcard">Credit Card Number</label>
-              <input type="text" name="creditcard" id="creditcard" />
+              <input type="text" onChange={handleChange} name="creditcard" value={formData.creditcard} id="creditcard" />
             </div>
             <div className="flex gap-s"><div className="input-group">
               <label htmlFor="cvc">CVC</label>
-              <input type="number" name="cvc" id="cvc" />
+              <input type="number" onChange={handleChange} value={formData.cvc} name="cvc" id="cvc" />
             </div>
               <div className="input-group">
                 <label htmlFor="exp_month">Month</label>
@@ -170,12 +196,12 @@ function App() {
             </div>
             <div className="input-group">
               <label htmlFor="address">Address</label>
-              <input type="text" name="address" id="address" />
+              <input type="text" onChange={handleChange} value={formData.address} name="address" id="address" />
             </div>
             <div className="flex gap-s">
               <div className="input-group">
                 <label htmlFor="zipcode">Zip Code</label>
-                <input type="text" name="zipcode" id="zipcode" />
+                <input type="text" onChange={handleChange} value={formData.zipcode} name="zipcode" id="zipcode" />
               </div>
               <div className="input-group">
                 <label htmlFor="city">City</label>
