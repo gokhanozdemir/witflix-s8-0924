@@ -155,10 +155,18 @@ function App() {
                   <option value="2029">2029</option>
                 </select>
               </div></div>
-            {/* TODO: convert to radio */}
             <div className="input-group">
-              <label htmlFor="cctype">Visa or Master Card</label>
-              <input type="text" name="cctype" id="cctype" />
+              <label>Visa or Master Card</label>
+              <div className="flex gap-m">
+                <label className="flex gap-s">
+                  <input type="radio" name="cctype" value="visa" />
+                  Visa
+                </label>
+                <label className="flex gap-s">
+                  <input type="radio" name="cctype" value="mastercard" />
+                  Master Card
+                </label>
+              </div>
             </div>
             <div className="input-group">
               <label htmlFor="address">Address</label>
