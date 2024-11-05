@@ -90,7 +90,7 @@ const initialForm = {
 }
 
 function App() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(initialForm);
 
   const handleChange = (event) => {
     const { type, name, value, checked } = event.target
@@ -155,7 +155,7 @@ function App() {
               <div className="input-group">
                 <label htmlFor="exp_month">Month</label>
 
-                <select id="exp_month" name="exp_month">
+                <select id="exp_month" name="exp_month" value={formData.exp_month} onChange={handleChange} >
                   <option value="01">01</option>
                   <option value="02">02</option>
                   <option value="03">03</option>
@@ -172,7 +172,8 @@ function App() {
               </div>
               <div className="input-group">
                 <label htmlFor="exp_year">Year</label>
-                <select id="exp_year" name="exp_year">
+                <select id="exp_year" name="exp_year" value={formData.exp_year} onChange={handleChange} >
+                  <option value="2023">2023</option>
                   <option value="2024">2024</option>
                   <option value="2025">2025</option>
                   <option value="2026">2026</option>
@@ -185,11 +186,11 @@ function App() {
               <label>Visa or Master Card</label>
               <div className="flex gap-m">
                 <label className="flex gap-s">
-                  <input type="radio" name="cctype" value="visa" />
+                  <input type="radio" checked={formData.cctype === "visa"} name="cctype" onChange={handleChange} value="visa" />
                   Visa
                 </label>
                 <label className="flex gap-s">
-                  <input type="radio" name="cctype" value="mastercard" />
+                  <input type="radio" checked={formData.cctype === "mastercard"} name="cctype" value="mastercard" onChange={handleChange} />
                   Master Card
                 </label>
               </div>
@@ -205,21 +206,21 @@ function App() {
               </div>
               <div className="input-group">
                 <label htmlFor="city">City</label>
-                <select id="city" name="city">
+                <select id="city" name="city" onChange={handleChange} value={formData.city} >
                   {cities.map((city) => <option key={city.cCode} value={city.cCode}>{city.name}</option>)}
                 </select>
               </div>
               <div className="input-group">
                 <label htmlFor="district">District</label>
-                <select id="district" name="district" defaultValue={"-1"}>
-                  <option value="-1" disabled="true">Select District</option>
+                <select id="district" name="district" defaultValue={"-1"} onChange={handleChange} value={formData.district} >
+                  <option value="-1" disabled={true}>Select District</option>
                   {districts.map((district) => <option key={district.cCode} value={district.cCode}>{district.name}</option>)}
                 </select>
               </div>
             </div>
             <div className="input-group">
               <label htmlFor="gdpr">GDPR</label>
-              <input type="checkbox" name="gdpr" id="gdpr" />
+              <input type="checkbox" checked={formData.gdpr} name="gdpr" id="gdpr" onChange={handleChange} />
             </div>
 
             <div className="flex between ">
