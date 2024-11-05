@@ -1,9 +1,9 @@
 @import url("./reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap");
 
-/* * {
-   border: 1px solid lime;
- } */
+* {
+  border: 1px solid lime;
+}
 :root {
   font-family: "Signika", sans-serif;
   font-optical-sizing: auto;
@@ -262,6 +262,34 @@ button.large {
   background-color: transparent;
 }
 
+.main-container {
+  background-color: rgb(41, 54, 41);
+}
+
+/*-----------------
+   - Layout CLASSES 
+   START
+   ------------*/
+
+.App {
+  min-height: 100vh;
+}
+
+.container-s {
+  margin: 0 auto;
+  max-width: 450px;
+}
+
+.container-lg {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+/*-----------------
+   - Layout CLASSES 
+   START
+   ------------*/
+
 /*-----------------
    - UTILITY CLASSES 
    START
@@ -286,6 +314,10 @@ button.large {
 
 .column {
   flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
 }
 
 .between {

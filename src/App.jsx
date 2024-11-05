@@ -59,25 +59,61 @@ function App() {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        {form.username}
-        <div className="input-group">
-          <label htmlFor="username">Username</label>
-          <input value={form.username} onChange={handleChange} type="text" id="username" name="username" placeholder="Kullanıcı Adı" />
+    <div className="App">
+      <header>
+        <div className="container-lg">NEETFLIK</div>
+      </header>
+      <main className="flex column gap-m main-container" >
+        <div className="container-s">
+          <form onSubmit={handleSubmit}>
+            {form.username}
+            <div className="input-group">
+              <label htmlFor="username">Username</label>
+              <input value={form.username} onChange={handleChange} type="text" id="username" name="username" placeholder="Kullanıcı Adı" />
+            </div>
+
+            <button type="submit">Add User</button>
+          </form>
         </div>
 
-        <button type="submit">Add User</button>
-      </form>
-      {users.map((user) => (
-
-        <Profile
-          key={user.id}
-          info={user}
-        />
-      ))}
-
-    </>
+        <div className="container-lg flex wrap center gap-s">
+          {users.map((user) => (
+            <Profile
+              key={user.id}
+              info={user}
+            />
+          ))}
+        </div>
+      </main>
+      <footer>
+        <div className="container-lg flex between">
+          <div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+          </div>
+          <div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+          </div>
+          <div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+          </div>
+          <div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+            <div className="">divdivdiv</div>
+          </div>
+        </div>
+      </footer>
+    </div>
   )
 }
 
