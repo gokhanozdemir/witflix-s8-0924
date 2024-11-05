@@ -219,8 +219,9 @@ function App() {
               </div>
             </div>
             <div className="input-group">
-              <label htmlFor="gdpr">GDPR</label>
-              <input type="checkbox" checked={formData.gdpr} name="gdpr" id="gdpr" onChange={handleChange} />
+              <label htmlFor="gdpr" className="flex gap-s">
+                <input type="checkbox" checked={formData.gdpr} name="gdpr" id="gdpr" onChange={handleChange} />
+                GDPR</label>
             </div>
 
             <div className="flex between ">
