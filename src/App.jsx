@@ -45,7 +45,7 @@ function App() {
             </div>
             <div className="input-group">
               <label htmlFor="email">E-mail</label>
-              <input type="text" name="email" id="email" />
+              <input type="email" name="email" id="email" />
             </div>
             <div className="input-group">
               <label htmlFor="creditcard">Credit Card Number</label>
@@ -53,16 +53,23 @@ function App() {
             </div>
             <div className="flex gap-s"><div className="input-group">
               <label htmlFor="cvc">CVC</label>
-              <input type="text" name="cvc" id="cvc" />
+              <input type="number" name="cvc" id="cvc" />
             </div>
+              {/* TODO: convert to dropdown */}
               <div className="input-group">
                 <label htmlFor="exp_month">Month</label>
                 <input type="text" name="exp_month" id="exp_month" />
               </div>
+              {/* TODO: convert to dropdown */}
               <div className="input-group">
                 <label htmlFor="exp_year">Year</label>
                 <input type="text" name="exp_year" id="exp_year" />
               </div></div>
+            {/* TODO: convert to radio */}
+            <div className="input-group">
+              <label htmlFor="cctype">Visa or Master Card</label>
+              <input type="text" name="cctype" id="cctype" />
+            </div>
             <div className="input-group">
               <label htmlFor="address">Address</label>
               <input type="text" name="address" id="address" />
@@ -72,10 +79,12 @@ function App() {
                 <label htmlFor="zipcode">Zip Code</label>
                 <input type="text" name="zipcode" id="zipcode" />
               </div>
+              {/* TODO: convert to dropdown */}
               <div className="input-group">
                 <label htmlFor="city">City</label>
                 <input type="text" name="city" id="city" />
               </div>
+              {/* TODO: convert to dropdown */}
               <div className="input-group">
                 <label htmlFor="district">District</label>
                 <input type="text" name="district" id="district" />
@@ -83,7 +92,7 @@ function App() {
             </div>
             <div className="input-group">
               <label htmlFor="gdpr">GDPR</label>
-              <input type="text" name="gdpr" id="gdpr" />
+              <input type="checkbox" name="gdpr" id="gdpr" />
             </div>
 
             <div className="flex between ">
