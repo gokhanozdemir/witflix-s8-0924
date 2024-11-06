@@ -78,14 +78,14 @@ const initialForm = {
   "lastname": "",
   "email": "",
   "cvc": "",
-  "exp_month": "11",
-  "exp_year": "2024",
+  "exp_month": "-1",
+  "exp_year": "-1",
   "cctype": "",
   "address": "",
   "zipcode": "",
-  "city": "ist",
+  "city": "-1",
   "district": "-1",
-  "gdpr": true
+  "gdpr": false
 
 }
 
@@ -156,6 +156,7 @@ function App() {
                 <label htmlFor="exp_month">Month</label>
 
                 <select id="exp_month" name="exp_month" value={formData.exp_month} onChange={handleChange} >
+                  <option value="-1" disabled={true}>Select Month</option>
                   <option value="01">01</option>
                   <option value="02">02</option>
                   <option value="03">03</option>
@@ -173,6 +174,7 @@ function App() {
               <div className="input-group">
                 <label htmlFor="exp_year">Year</label>
                 <select id="exp_year" name="exp_year" value={formData.exp_year} onChange={handleChange} >
+                  <option value="-1" disabled={true}>Select Year</option>
                   <option value="2023">2023</option>
                   <option value="2024">2024</option>
                   <option value="2025">2025</option>
@@ -207,6 +209,7 @@ function App() {
               <div className="input-group">
                 <label htmlFor="city">City</label>
                 <select id="city" name="city" onChange={handleChange} value={formData.city} >
+                  <option value="-1" disabled={true}>Select City</option>
                   {cities.map((city) => <option key={city.cCode} value={city.cCode}>{city.name}</option>)}
                 </select>
               </div>
