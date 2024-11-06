@@ -345,3 +345,19 @@ button.large {
    
    END
    ------------*/
+
+/*-----------------
+   - FORM
+   START
+   ------------*/
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/*-----------------
+   - FORM 
+   END
+   ------------*/
