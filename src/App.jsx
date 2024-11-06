@@ -204,23 +204,28 @@ function App() {
               <div className="input-group">
                 <label htmlFor="firstname">First Name</label>
                 <input type="text" value={formData.firstname} onChange={handleChange} name="firstname" id="firstname" />
+                {errors.firstname && <div className="error">{errors.firstname}</div>}
               </div>
               <div className="input-group">
                 <label htmlFor="lastname">Last Name</label>
                 <input type="text" value={formData.lastname} onChange={handleChange} name="lastname" id="lastname" />
+                {errors.lastname && <div className="error">{errors.lastname}</div>}
               </div>
             </div>
             <div className="input-group">
               <label htmlFor="email">E-mail</label>
               <input type="email" onChange={handleChange} value={formData.email} name="email" id="email" />
+              {errors.email && <div className="error">{errors.email}</div>}
             </div>
             <div className="input-group">
               <label htmlFor="creditcard">Credit Card Number</label>
               <input type="text" onChange={handleChange} name="creditcard" value={formData.creditcard} id="creditcard" />
+              {errors.creditcard && <div className="error">{errors.creditcard}</div>}
             </div>
             <div className="flex gap-s"><div className="input-group">
               <label htmlFor="cvc">CVC</label>
               <input type="number" onChange={handleChange} value={formData.cvc} name="cvc" id="cvc" />
+              {errors.cvc && <div className="error">{errors.cvc}</div>}
             </div>
               <div className="input-group">
                 <label htmlFor="exp_month">Month</label>
@@ -240,6 +245,7 @@ function App() {
                   <option value="11">11</option>
                   <option value="12">12</option>
                 </select>
+                {errors.exp_month && <div className="error">{errors.exp_month}</div>}
               </div>
               <div className="input-group">
                 <label htmlFor="exp_year">Year</label>
@@ -253,6 +259,7 @@ function App() {
                   <option value="2028">2028</option>
                   <option value="2029">2029</option>
                 </select>
+                {errors.exp_year && <div className="error">{errors.exp_year}</div>}
               </div></div>
             <div className="input-group">
               <label>Visa or Master Card</label>
@@ -266,15 +273,18 @@ function App() {
                   Master Card
                 </label>
               </div>
+              {errors.cctype && <div className="error">{errors.cctype}</div>}
             </div>
             <div className="input-group">
               <label htmlFor="address">Address</label>
               <input type="text" onChange={handleChange} value={formData.address} name="address" id="address" />
+              {errors.address && <div className="error">{errors.address}</div>}
             </div>
             <div className="flex gap-s">
               <div className="input-group">
                 <label htmlFor="zipcode">Zip Code</label>
                 <input type="text" onChange={handleChange} value={formData.zipcode} name="zipcode" id="zipcode" />
+                {errors.zipcode && <div className="error">{errors.zipcode}</div>}
               </div>
               <div className="input-group">
                 <label htmlFor="city">City</label>
@@ -282,6 +292,7 @@ function App() {
                   <option value="-1" disabled={true}>Select City</option>
                   {cities.map((city) => <option key={city.cCode} value={city.cCode}>{city.name}</option>)}
                 </select>
+                {errors.city && <div className="error">{errors.city}</div>}
               </div>
               <div className="input-group">
                 <label htmlFor="district">District</label>
@@ -289,12 +300,15 @@ function App() {
                   <option value="-1" disabled={true}>Select District</option>
                   {districts.map((district) => <option key={district.cCode} value={district.cCode}>{district.name}</option>)}
                 </select>
+                {errors.district && <div className="error">{errors.district}</div>}
               </div>
             </div>
             <div className="input-group">
               <label htmlFor="gdpr" className="flex gap-s">
                 <input type="checkbox" checked={formData.gdpr} name="gdpr" id="gdpr" onChange={handleChange} />
                 GDPR</label>
+              {/* shortcircuiting */}
+              {errors.gdpr && <div className="error">{errors.gdpr}</div>}
             </div>
 
             <div className="flex between ">
