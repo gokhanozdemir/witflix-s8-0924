@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 const cities = [
@@ -90,12 +90,13 @@ const initialForm = {
 }
 
 function App() {
+
   const [formData, setFormData] = useState(initialForm);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
     const { type, name, value, checked } = event.target
     console.log("type, name, value, checked:", type, name, value, checked)
-
 
     if (type === "checkbox") {
       setFormData({
@@ -108,7 +109,54 @@ function App() {
         [name]: value // tek farklı satır
       })
     }
+    /* START Alan hata kontrolüne başlar */
+    const updatedErrors = {
+      ...errors,
+    }
+
+    if (name === "creditcard") {
+      if (value.length < 16) {
+        updatedErrors[name] = "Kredi kartı numarası 16 hane olmalıdır."
+      } else {
+        updatedErrors[name] = ""
+      }
+    }
+
+    if (name === "firstname" || name === "lastname" || name === "address" || name === "cvc") {
+      if (value.length < 3) {
+        updatedErrors[name] = "En az 3 karakter olmalıdır."
+      } else {
+        updatedErrors[name] = ""
+      }
+    }
+
+    if (name === "zipcode") {
+      if (value.length < 5) {
+        updatedErrors[name] = "En az 5 karakter olmalıdır."
+      } else {
+        updatedErrors[name] = ""
+      }
+    }
+
+    if (name === "cctype") {
+      if (value === "") {
+        updatedErrors[name] = "Bir kart tipi seçmelisiniz."
+      } else {
+        updatedErrors[name] = ""
+      }
+    }
+
+    // visa boşsa hata ver
+    // posta kodu 5 değilse hata ver
+
+    setErrors(updatedErrors)
+    /* END Alan hata kontrolüne BİTER */
   }
+
+  useEffect(() => {
+    // formda her hangi bir hata var mı?
+    // isValid gibi bir state
+  }, [formData])
 
   const handleSubmit = (event) => {
     event.preventDefault();
