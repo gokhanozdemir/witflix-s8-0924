@@ -146,8 +146,30 @@ function App() {
       }
     }
 
-    // visa boşsa hata ver
-    // posta kodu 5 değilse hata ver
+    if (name === "gdpr") {
+      if (!checked) {
+        updatedErrors[name] = "GDPR onamı zorunludur."
+      } else {
+        updatedErrors[name] = ""
+      }
+    }
+
+    if (name === "city" || name === "district" || name === "exp_month" || name === "exp_year") {
+      if (value === "-1") {
+        updatedErrors[name] = "Bir seçim yapınız."
+      } else {
+        updatedErrors[name] = ""
+      }
+    }
+
+    if (name === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(value)) {
+        updatedErrors[name] = "Gecersiz email adresi."
+      } else {
+        updatedErrors[name] = ""
+      }
+    }
 
     setErrors(updatedErrors)
     /* END Alan hata kontrolüne BİTER */
