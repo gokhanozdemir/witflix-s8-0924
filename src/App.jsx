@@ -1,39 +1,16 @@
 import { useEffect, useState } from "react"
 import PaymentForm from "./components/PaymentForm"
-
+import { MembershipSelector } from "./components/MembershipSelector"
 function App() {
 
-  const membershipPlans = [
-    {
-      name: "Basic",
-      price: 300
-    },
-    {
-      name: "Standard",
-      price: 500
-    },
-    {
-      name: "Family Extra Plus",
-      price: 700
-    }
-  ]
-
-  const [formData, setFormData] = useState(membershipPlans[0]);
-  const [finalPrice, setFinalPrice] = useState(0)
-
-  const handleChange = (event) => {
-    membershipPlans.find((plan) => {
-      if (plan.name === event.target.value) {
-        setFormData(plan)
-      }
-    })
-  }
+  const [choosenPlan, setChoosenPlan] = useState({})
+  const [finalPrice, setFinalPrice] = useState(0);
 
   useEffect(() => {
-    const newPrice = (0.95 * formData.price)
+    const newPrice = 0.95 * choosenPlan.price;
     // indirimli vs matematiksel kompleksite
-    setFinalPrice(newPrice)
-  }, [formData])
+    setFinalPrice(newPrice);
+  }, [choosenPlan]);
 
   return (
     <div className="App">
@@ -42,29 +19,11 @@ function App() {
       </header>
       <main className="flex column gap-m main-container" >
         <div className="container-s">
-          {finalPrice > 0 && <p className="price">Aylık {formData.price} yerine, sadece {finalPrice} ₺ ödeyeceksin</p>}
-          <form>
-            <div className="input-group">
-              <label>Membership Options</label>
-              <div className="flex gap-m">
-                {membershipPlans.map((plan) => (
-                  <label key={plan.name} className="flex gap-s">
-                    <input type="radio" checked={formData.name === plan.name} name="membershipPlan" onChange={handleChange} value={plan.name} />
-                    {plan.name}
-                  </label>
-                ))}
-              </div>
-            </div>
-          </form>
+          <MembershipSelector changeChoosenPlan={setChoosenPlan} finalPrice={finalPrice} />
         </div>
-        <PaymentForm selectedPlan={formData} cost={finalPrice} />
-        {/* 
-        PaymentForm({selectedPlan:formData})
-          bütün attribute leri props olarak verir
-
-        props={
-        selectedPlan:formData
-        } */}
+        <div className="container-s">
+          <PaymentForm selectedPlan={choosenPlan} cost={finalPrice} />
+        </div>
       </main>
 
     </div>
