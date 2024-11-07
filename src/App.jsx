@@ -5,7 +5,8 @@ import { MembershipSelector } from "./components/MembershipSelector"
 import {
   Switch,
   Route,
-  Link
+  Link,
+  NavLink
 } from "react-router-dom";
 
 function App() {
@@ -25,20 +26,30 @@ function App() {
         <div className="container-lg">
           <Link to="/" >NEETFLIK</Link>
           {/* <a href="/">anchor etiketi kullnılacak her yerde Link</a> */}
+          <ul>
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/payment">Payment</NavLink>
+            </li>
+
+          </ul>
         </div>
       </header>
       <main className="flex column gap-m main-container" >
         <Switch>
+          <Route path="/" exact>
+            <div className="container-s">
+              <MembershipSelector changeChoosenPlan={setChoosenPlan} finalPrice={finalPrice} />
+            </div>
+          </Route>
           <Route path="/payment">
             <div className="container-s">
               <PaymentForm selectedPlan={choosenPlan} cost={finalPrice} />
             </div>
           </Route>
-          <Route path="/">
-            <div className="container-s">
-              <MembershipSelector changeChoosenPlan={setChoosenPlan} finalPrice={finalPrice} />
-            </div>
-          </Route>
+
         </Switch>
       </main>
 
