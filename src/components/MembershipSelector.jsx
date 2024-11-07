@@ -26,10 +26,9 @@ export function MembershipSelector({ changeChoosenPlan, finalPrice }) {
     });
   };
 
-  -
-    useEffect(() => {
-      changeChoosenPlan(formData);
-    }, [formData]);
+  useEffect(() => {
+    changeChoosenPlan(formData);
+  }, [formData]);
 
   return (
     <>
