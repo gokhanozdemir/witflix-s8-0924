@@ -93,6 +93,10 @@ a:hover {
   color: var(--text-lightest);
   text-decoration: underline;
 }
+a.active {
+  color: white;
+  text-decoration: underline;
+}
 /* -------
    DESIGN SYSTEM
    -------
