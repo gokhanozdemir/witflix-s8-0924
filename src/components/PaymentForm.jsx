@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom";
 
 
 const cities = [
@@ -89,6 +90,8 @@ const initialForm = {
 }
 
 function PaymentForm({ selectedPlan, cost }) {
+  let history = useHistory();
+
   const { name: planName, price: planPrice } = selectedPlan;
 
   const [formData, setFormData] = useState(initialForm);
@@ -187,6 +190,11 @@ function PaymentForm({ selectedPlan, cost }) {
       isValidStatus = true
     }
     setIsValid(isValidStatus) // isValid
+  }
+
+  const handleCancel = () => {
+    console.log("vazgeçtim nazlı netflikten")
+    history.push("/");
   }
 
   useEffect(() => {
@@ -326,7 +334,7 @@ function PaymentForm({ selectedPlan, cost }) {
         <div>Selected Plan: {planName} and initial price {planPrice}, Amount to be paid with discount {cost} </div>
         <div className="flex between ">
           <button disabled={!isValid} type="submit" className="action-button">Pay Now</button>
-          <button type="button" className="secondary-button">Cancel</button>
+          <button type="button" onClick={handleCancel} className="secondary-button">Cancel</button>
           <button type="button" className="secondary-button">Reset Form</button>
         </div>
       </form>

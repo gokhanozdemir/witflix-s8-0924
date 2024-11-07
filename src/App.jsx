@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react"
 import PaymentForm from "./components/PaymentForm"
 import { MembershipSelector } from "./components/MembershipSelector"
+
+import {
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 function App() {
 
   const [choosenPlan, setChoosenPlan] = useState({})
@@ -15,15 +22,24 @@ function App() {
   return (
     <div className="App">
       <header>
-        <div className="container-lg">NEETFLIK</div>
+        <div className="container-lg">
+          <Link to="/" >NEETFLIK</Link>
+          {/* <a href="/">anchor etiketi kullnılacak her yerde Link</a> */}
+        </div>
       </header>
       <main className="flex column gap-m main-container" >
-        <div className="container-s">
-          <MembershipSelector changeChoosenPlan={setChoosenPlan} finalPrice={finalPrice} />
-        </div>
-        <div className="container-s">
-          <PaymentForm selectedPlan={choosenPlan} cost={finalPrice} />
-        </div>
+        <Switch>
+          <Route path="/payment">
+            <div className="container-s">
+              <PaymentForm selectedPlan={choosenPlan} cost={finalPrice} />
+            </div>
+          </Route>
+          <Route path="/">
+            <div className="container-s">
+              <MembershipSelector changeChoosenPlan={setChoosenPlan} finalPrice={finalPrice} />
+            </div>
+          </Route>
+        </Switch>
       </main>
 
     </div>

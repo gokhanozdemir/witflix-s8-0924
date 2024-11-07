@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export function MembershipSelector({ changeChoosenPlan, finalPrice }) {
   const membershipPlans = [
@@ -58,7 +59,10 @@ export function MembershipSelector({ changeChoosenPlan, finalPrice }) {
           </div>
         </form>
       </>
+      <div>
+        <Link to="/payment">Next step</Link>
 
+      </div>
     </>
   )
 }
