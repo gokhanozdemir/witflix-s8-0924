@@ -88,7 +88,8 @@ const initialForm = {
   "gdpr": false
 }
 
-function PaymentForm() {
+function PaymentForm({ selectedPlan, cost }) {
+  const { name: planName, price: planPrice } = selectedPlan;
 
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
@@ -322,7 +323,7 @@ function PaymentForm() {
           {/* shortcircuiting */}
           {errors.gdpr && <div className="error">{errors.gdpr}</div>}
         </div>
-
+        <div>Selected Plan: {planName} and initial price {planPrice}, Amount to be paid with discount {cost} </div>
         <div className="flex between ">
           <button disabled={!isValid} type="submit" className="action-button">Pay Now</button>
           <button type="button" className="secondary-button">Cancel</button>
